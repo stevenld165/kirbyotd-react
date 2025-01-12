@@ -8,3 +8,12 @@ This project was made to learn both SQL and the process of creating a Backend RE
 - Backend: Express.JS & Node.js
 - Database: PostgreSQL
 
+## Process:
+- [x] Learn the basics of SQL
+- [x] Learn the basics of creating a REST API backend using Express.js
+- [x] Get data from the Kirby Wiki to use in project
+- [x] Create Database schema and set-up PostgreSQL tables
+  - [x] Fiddle with Docker to get development and testing to work properly 😔
+- [x] Create API
+- [ ] Create Frontend
+- [ ] Find suitable way to either host or deploy project!
