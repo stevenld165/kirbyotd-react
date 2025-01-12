@@ -25,3 +25,4 @@ dist-ssr
 
 # ignore db.js during development to prevent stealing of password :)
 db.js
+password.txt
