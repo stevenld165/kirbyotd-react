@@ -16,6 +16,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./client
+      args:
+        VITE_API_URL: http://192.168.0.158:3000 # Use Domain name if exists, otherwise use public IP
     container_name: kirbyotd_frontend
     ports:
       - 80:8080
@@ -24,6 +26,9 @@ services:
       dockerfile: Dockerfile
       context: ./server
     container_name: kirbyotd_backend
+    environment:
+      - DB_HOSTNAME="db" # Should usually always be db for this compose file
+      - DB_PASSWORD_FILE=/run/secrets/db-password
     ports:
       - 3000:3000
 volumes:

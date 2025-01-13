@@ -10,7 +10,7 @@ function KirbyDisplay() {
   useEffect(() => {
     const getKirby = async () => {
       try {
-        const data = await fetch("http://localhost:3000")
+        const data = await fetch(import.meta.env.VITE_API_URL)
         const json = await data.json()
         setDailyKirby(json)
       } catch (error) {
