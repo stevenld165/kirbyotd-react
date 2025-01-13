@@ -26,6 +26,8 @@ services:
       dockerfile: Dockerfile
       context: ./server
     container_name: kirbyotd_backend
+    secrets:
+      - db-password
     environment:
       - DB_HOSTNAME="db" # Should usually always be db for this compose file
       - DB_PASSWORD_FILE=/run/secrets/db-password
