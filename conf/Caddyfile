@@ -1,5 +1,5 @@
 mathisfun.unibutton.com {
-    handle /api* {
+    handle_path /api* {
         reverse_proxy backend:3000
     }
     handle {
