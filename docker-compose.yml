@@ -10,6 +10,7 @@ services:
     environment:
       - POSTGRES_DB=kirbyotd
       - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+      - TZ=America/Chicago
     ports:
       - 5432:5432
   frontend:
