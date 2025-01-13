@@ -5,6 +5,8 @@ This project was made to learn both SQL and the process of creating a Backend RE
 
 ## How to run
 
+- In the server folder, create a `password.txt` with a chosen password for your PostgreSQL database
+- In the `docker-compose.yml` change the `VITE_API_URL` variable to the public facing hostname of your API (including any ports)
 - Use Docker Compose to run the docker-compose.yml
 - Afterward, connect to the PostgreSQL server in whatever fashion you desire
   - Use the SQL commands in kirbyotd.txt to recreate the copy_abilities and daily_records tables

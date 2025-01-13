@@ -17,10 +17,10 @@ services:
       dockerfile: Dockerfile
       context: ./client
       args:
-        VITE_API_URL: http://192.168.0.158:3000 # Use Domain name if exists, otherwise use public IP
+        VITE_API_URL: https://mathisfun.unibutton.com/api # Use Domain name if exists, otherwise use public IP
     container_name: kirbyotd_frontend
     ports:
-      - 80:8080
+      - 8080:8080
   backend:
     build:
       dockerfile: Dockerfile
@@ -33,8 +33,23 @@ services:
       - DB_PASSWORD_FILE=/run/secrets/db-password
     ports:
       - 3000:3000
+  caddy:
+    image: 2.9.1-alpine
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - $PWD/conf:/etc/caddy
+      - caddy_data:/data
+      - caddy_config:/config
 volumes:
   db-data:
+  caddy_data:
+  caddy_config:
 secrets:
   db-password:
     file: server/password.txt
