@@ -68,4 +68,22 @@ app.get("/", async (req, res) => {
   }
 })
 
+app.get("/pastrecords", async (req,res) => {
+  try {
+    const pastRecords = await db.manyOrNone(`
+      SELECT record_id, ability, img, record_date FROM daily_records as d
+      INNER JOIN copy_abilities as c ON c.copy_id = d.copy_id
+      WHERE record_date != CURRENT_DATE
+      ORDER BY record_date DESC
+      LIMIT 5;
+    `)
+    console.log(`Retrieved past records: ${pastRecords}`)
+    res.json(pastRecords)
+
+  } catch (error) {
+    console.error(error)
+  }
+  
+})
+
 app.listen(3000)
