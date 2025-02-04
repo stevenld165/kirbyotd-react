@@ -37,6 +37,17 @@
   }
 }
 
+.kirby-display-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5vh;
+  p {
+    margin-bottom: 0;
+  }
+}
+
 
 .kirby-slider {
  // min-width: 30vw;

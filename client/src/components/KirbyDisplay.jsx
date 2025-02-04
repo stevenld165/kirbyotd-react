@@ -57,6 +57,7 @@ function KirbyDisplay() {
   
   return (
     <div className="kirby-display-container">
+      <p>view past kirbys ➡️</p>
       <Slider {...carouselSettings}>
         <Card date="today" ability={dailyKirby.ability} img={dailyKirby.img} />
         {previousKirbyCards}
