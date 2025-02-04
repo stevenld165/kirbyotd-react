@@ -8,3 +8,37 @@ body {
   margin: 0;
   background-color: #ffe9f2;
 }
+
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.extras-container {
+  display: flex;
+  text-align: center;
+  gap: 20px;
+  align-items: center;
+}
+
+@media (width <= 500px) {
+  .extras-container {
+    flex-direction: column;
+    gap: 5px;
+
+    p {
+      margin-top: 2px;
+      margin-bottom: 0px;
+    }
+  }
+}
+
+.next-countdown {
+  position: relative;
+  margin: auto;
+  top:auto;
+  right: auto;
+  text-align: center;
+}

@@ -41,6 +41,7 @@ app.get("/", async (req, res) => {
         `SELECT ability, img FROM copy_abilities WHERE copy_id = $1`,
         randomCopyID
       )
+      
       res.json(newDailyAbility)
 
       console.log(`Generated new daily kirby: ${newDailyAbility.ability}`)
@@ -70,20 +71,36 @@ app.get("/", async (req, res) => {
 
 app.get("/pastrecords", async (req,res) => {
   try {
+    // Retrieves the last 5 (or less) kirby copy abilities generated that is not today's
     const pastRecords = await db.manyOrNone(`
       SELECT record_id, ability, img, record_date FROM daily_records as d
       INNER JOIN copy_abilities as c ON c.copy_id = d.copy_id
       WHERE record_date != CURRENT_DATE
-      ORDER BY record_date DESC
-      LIMIT 5;
+      ORDER BY record_date DESC;
     `)
-    console.log(`Retrieved past records: ${pastRecords}`)
+    console.log(`Retrieved past records: ${pastRecords.map((record) => (record.ability))}`)
     res.json(pastRecords)
 
   } catch (error) {
     console.error(error)
   }
   
+})
+
+app.get("/abilitiesleft", async (req,res) => {
+  try {
+    const abilitiesLeft = await db.one(`
+      SELECT count(ability) as count
+            FROM copy_abilities AS c
+            LEFT OUTER JOIN daily_records as d ON c.copy_id = d.copy_id
+            WHERE d.copy_id IS NULL;
+    `)
+    console.log(`Retrieved count of abilities left: ${abilitiesLeft.count}`)
+    res.send(abilitiesLeft.count)
+    
+  } catch (error) {
+    console.error(error)
+  }
 })
 
 app.listen(3000)
