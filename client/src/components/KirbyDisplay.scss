@@ -36,3 +36,15 @@
     }
   }
 }
+
+
+.kirby-slider {
+ // min-width: 30vw;
+ max-width: 50vw;
+}
+
+@media (width <= 500px) {
+  .kirby-slider {
+    max-width: 80vw;
+  }
+}
