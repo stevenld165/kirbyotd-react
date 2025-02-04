@@ -8,3 +8,17 @@ body {
   margin: 0;
   background-color: #ffe9f2;
 }
+
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.next-countdown {
+  position: relative;
+  margin: auto;
+  top:auto;
+  right: auto;
+  text-align: center;
+}

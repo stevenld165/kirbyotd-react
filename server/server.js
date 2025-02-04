@@ -70,6 +70,7 @@ app.get("/", async (req, res) => {
 
 app.get("/pastrecords", async (req,res) => {
   try {
+    // Retrieves the last 5 (or less) kirby copy abilities generated that is not today's
     const pastRecords = await db.manyOrNone(`
       SELECT record_id, ability, img, record_date FROM daily_records as d
       INNER JOIN copy_abilities as c ON c.copy_id = d.copy_id
@@ -77,7 +78,7 @@ app.get("/pastrecords", async (req,res) => {
       ORDER BY record_date DESC
       LIMIT 5;
     `)
-    console.log(`Retrieved past records: ${pastRecords}`)
+    console.log(`Retrieved past records: ${pastRecords.map((record) => (record.ability))}`)
     res.json(pastRecords)
 
   } catch (error) {
