@@ -3,8 +3,9 @@
 
 > Every single day, a new Kirby copy ability!
 
-An Express.js API and accompaning React frontend to generate a new Kirby copy ability every day. It stores each day's generated Kirby in a PostgreSQL server to prevent repeats until all copy abilities have been exhausted.
+An Express.js API and accompaning React frontend to generate a new Kirby copy ability every day\*. It stores each day's generated Kirby in a PostgreSQL server to prevent repeats until all copy abilities have been exhausted.
 
+\*New Kirbys only generate if it is requested at least once per day. This is intentional, as if nobody wants a new kirby that day, it won't be made.
 ## How to run
 
 - In the server folder, create a `password.txt` with a chosen password for your PostgreSQL database
@@ -41,13 +42,13 @@ This project was made to learn both SQL and the process of creating a Backend RE
 ## Future Plans:
 
 ### Backend:
-- [ ] Update API to provide ability to access previous days' Kirbys
-- [ ] Update API to provide a count of the number of Kirbys left before reseting
+- [x] Update API to provide ability to access previous days' Kirbys
+- [x] Update API to provide a count of the number of Kirbys left before reseting
 - [ ] Create some kind of indicator for if the server is running (the api is currently running on my little Raspberry Pi.. possible plans to move backend to another service)
 
 ### Frontend:
-- [ ] Incorporate new API changes to provide more functionality!
-- [ ] Add some sort of timer until a new Kirby is generated, perhaps with an auto refresh
+- [x] Incorporate new API changes to provide more functionality!
+- [x] Add some sort of timer until a new Kirby is generated, perhaps with an auto refresh
 - [ ] Add some kind of fun animation to the currently static webpage
 
 ---
