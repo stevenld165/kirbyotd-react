@@ -29,14 +29,14 @@ function KirbyDisplay() {
     const getKirby = async () => {
       try {
         // Get today's kirby
-        const data = await fetch(import.meta.env.VITE_API_URL)
-        const json = await data.json()
-        setDailyKirby(json)
+        const kirbyData = await fetch(import.meta.env.VITE_API_URL)
+        const kirbyJson = await kirbyData.json()
+        setDailyKirby(kirbyJson)
 
         // Get the previous kirbys
-        const oldKirby = await fetch(import.meta.env.VITE_API_URL + "/pastrecords")
-        const oldKirbyJson = await oldKirby.json()
-        const fixedOldKirbys = oldKirbyJson.map((record) => {
+        const oldKirbys = await fetch(import.meta.env.VITE_API_URL + "/pastrecords")
+        const oldKirbysJson = await oldKirbys.json()
+        const fixedOldKirbys = oldKirbysJson.map((record) => {
           const date = new Date(record.record_date)
           return ({
             ...record,

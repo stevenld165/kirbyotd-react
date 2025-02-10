@@ -4,7 +4,7 @@ import './Card.scss'
 function Card({img,ability,date}) {
   return (
     <div className='card-container'>
-      <h3>kirby of {date} is:</h3>
+      <h3>kirby of <span className='date'>{date}</span> is:</h3>
       <div className='img'>
         <img src={img} />
       </div>

@@ -1,7 +1,7 @@
 .header {
   background-color: #45363b;
   margin-top: 2vh;
-  height: 20vh;
+  height: 18vh;
   display: flex;
   gap: 25px;
   align-items: center;
@@ -16,8 +16,8 @@
 
     h1 {
       color: #fe7ea6;
-      font-family: "Gloock", serif;
-      font-weight: normal;
+      font-family: "Bricolage Grotesque", serif;
+      font-weight: 800;
       font-size: 64px;
       margin-bottom: 0;
       margin-top: 0;
@@ -37,7 +37,7 @@
   }
 }
 
-@media (width <= 500px) {
+@media (width <= 660px) {
   .header .header-title h1 {
     font-size: 1.2em;
   }
