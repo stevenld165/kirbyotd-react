@@ -11,9 +11,10 @@ An Express.js API and accompaning React frontend to generate a new Kirby copy ab
 - In the server folder, create a `password.txt` with a chosen password for your PostgreSQL database
 - In the `docker-compose.yml` change the `VITE_API_URL` variable to the public facing hostname of your API (including any ports)
 - Use Docker Compose to run the docker-compose.yml
-- Afterward, connect to the PostgreSQL server in whatever fashion you desire
-  - Use the SQL commands in kirbyotd.txt to recreate the copy_abilities and daily_records tables
-- (Alternatively) Connect using pgAdmin and restore using the kirbyotd.backup file
+- ~~Afterward, connect to the PostgreSQL server in whatever fashion you desire~~
+  - ~~Use the SQL commands in kirbyotd.txt to recreate the copy_abilities and daily_records tables~~
+- ~~(Alternatively) Connect using pgAdmin and restore using the kirbyotd.backup file~~
+  - These steps should no longer be necessary with the inclusion of the SQL script to setup tables included in the repository and changes to docker-compose.yml
 - Edit the Caddyfile to correspond with your situation
 - Woohoo! Enjoy your daily kirbys!
 
