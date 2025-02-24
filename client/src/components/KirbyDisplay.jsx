@@ -36,11 +36,13 @@ function KirbyDisplay() {
         // Get the previous kirbys
         const oldKirbys = await fetch(import.meta.env.VITE_API_URL + "/pastrecords")
         const oldKirbysJson = await oldKirbys.json()
+
         const fixedOldKirbys = oldKirbysJson.map((record) => {
           const date = new Date(record.record_date)
+          //console.log(date.getUTCDate())
           return ({
             ...record,
-            record_date: date.toDateString().toLowerCase().substring(4)
+            record_date: date.toUTCString().toLowerCase().substring(4,16)
           })
         })
 
