@@ -4,8 +4,8 @@ import "./KirbyDisplay.scss"
 import Card from "./Card"
 
 import Slider from "react-slick"
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
 function KirbyDisplay() {
   const [dailyKirby, setDailyKirby] = useState({
@@ -18,11 +18,12 @@ function KirbyDisplay() {
   const carouselSettings = {
     speed: 500,
     rtl: false,
-    dots: false,
+    dots: true,
     infinite: false,
     slidesToShow: 1,
     slidesToScroll: 1,
-    className: "kirby-slider"
+    lazyLoad: true,
+    className: "kirby-slider",
   }
 
   useEffect(() => {
@@ -34,16 +35,18 @@ function KirbyDisplay() {
         setDailyKirby(kirbyJson)
 
         // Get the previous kirbys
-        const oldKirbys = await fetch(import.meta.env.VITE_API_URL + "/pastrecords")
+        const oldKirbys = await fetch(
+          import.meta.env.VITE_API_URL + "/pastrecords"
+        )
         const oldKirbysJson = await oldKirbys.json()
 
         const fixedOldKirbys = oldKirbysJson.map((record) => {
           const date = new Date(record.record_date)
           //console.log(date.getUTCDate())
-          return ({
+          return {
             ...record,
-            record_date: date.toUTCString().toLowerCase().substring(4,16)
-          })
+            record_date: date.toUTCString().toLowerCase().substring(4, 16),
+          }
         })
 
         setPreviousKirbys(fixedOldKirbys)
@@ -55,16 +58,22 @@ function KirbyDisplay() {
     getKirby()
   }, [])
 
-  const previousKirbyCards = previousKirbys.map((record) => (<Card date={record.record_date} ability={record.ability} img={record.img} key={record.record_id} />))
-  
+  const previousKirbyCards = previousKirbys.map((record) => (
+    <Card
+      date={record.record_date}
+      ability={record.ability}
+      img={record.img}
+      key={record.record_id}
+    />
+  ))
+
   return (
-    <div className="kirby-display-container">
+    <div className='kirby-display-container'>
       <p>view past kirbys ➡️</p>
       <Slider {...carouselSettings}>
-        <Card date="today" ability={dailyKirby.ability} img={dailyKirby.img} />
+        <Card date='today' ability={dailyKirby.ability} img={dailyKirby.img} />
         {previousKirbyCards}
       </Slider>
-      
     </div>
   )
   /*
