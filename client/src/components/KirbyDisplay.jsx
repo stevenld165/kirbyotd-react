@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Component } from "react"
+import React, { useEffect, useState, Component, useRef } from "react"
 import "./KirbyDisplay.scss"
 
 import Card from "./Card"
@@ -15,15 +15,18 @@ function KirbyDisplay() {
 
   const [previousKirbys, setPreviousKirbys] = useState([])
 
+  const [sliderIndex, setSliderIndex] = useState(0)
+  let sliderRef = useRef(null)
   const carouselSettings = {
     speed: 500,
     rtl: false,
-    dots: true,
+    dots: false,
     infinite: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     lazyLoad: true,
     className: "kirby-slider",
+    beforeChange: (current, next) => setSliderIndex(next),
   }
 
   useEffect(() => {
@@ -70,10 +73,26 @@ function KirbyDisplay() {
   return (
     <div className='kirby-display-container'>
       <p>view past kirbys ➡️</p>
-      <Slider {...carouselSettings}>
+      <Slider
+        ref={(slider) => {
+          sliderRef = slider
+        }}
+        {...carouselSettings}
+      >
         <Card date='today' ability={dailyKirby.ability} img={dailyKirby.img} />
         {previousKirbyCards}
       </Slider>
+      <p className='slide-index'>
+        {sliderIndex + 1}/{previousKirbys.length + 1}
+      </p>
+      {sliderIndex != 0 && (
+        <button
+          onClick={(e) => sliderRef.slickGoTo(0)}
+          className='return-button'
+        >
+          today
+        </button>
+      )}
     </div>
   )
   /*

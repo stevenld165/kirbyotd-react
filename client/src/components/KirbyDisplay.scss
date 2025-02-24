@@ -46,6 +46,27 @@
   p {
     margin-bottom: 0;
   }
+
+  .return-button {
+    background-color: rgba(254, 126, 166, 0.47);
+    font-weight: bold;
+    font-family: "Sora", sans-serif;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 10px;
+
+    &:hover {
+      background-color: rgba(254, 126, 166, 1);
+    }
+  }
+
+  .slide-index {
+    margin-top: 10px;
+    font-weight: 600;
+    color: #45363b;
+  }
 }
 
 .kirby-slider {
@@ -57,4 +78,9 @@
   .kirby-slider {
     max-width: 80vw;
   }
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #fe7ea6 !important;
 }
